@@ -11,8 +11,12 @@ import Contact from './pages/Contact'
 import Resume from './pages/Resume'
 
 function App() {
+  const baseUrl = import.meta.env.BASE_URL
+  const basename =
+    baseUrl === '/' ? undefined : baseUrl.replace(/\/$/, '') || undefined
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route element={<HudLayout />}>
           <Route path="/" element={<Home />} />

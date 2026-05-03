@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import EducationStackChips from '../components/EducationStackChips'
 import HudCard from '../components/HudCard'
 import { educationEntries } from '../data/education'
+import { publicUrl } from '../utils/publicUrl'
 
 function InstitutionLogo({ logoUrl, institution }) {
   const [failed, setFailed] = useState(false)
@@ -24,7 +25,7 @@ function InstitutionLogo({ logoUrl, institution }) {
   }
   return (
     <img
-      src={logoUrl}
+      src={publicUrl(logoUrl)}
       alt=""
       width={72}
       height={72}
