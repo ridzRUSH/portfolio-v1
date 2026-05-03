@@ -22,14 +22,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true   # ✅ opt-in now
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4   # still fine (GitHub will upgrade runtime)
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20   # or 22 (recommended going forward)
           cache: npm
 
       - name: Install dependencies
@@ -41,10 +44,10 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload dist folder
+      - name: Upload dist
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist   # ✅ Vite output
+          path: ./dist
 
       - name: Deploy
         id: deployment
