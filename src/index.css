@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: ui-sans-serif, system-ui, 'Segoe UI', Inter, sans-serif;
+  --font-mono-display: ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  /* HUD spec */
+  --color-cyber-bg: #050a18;
+  --color-cyber-bg-deep: #030712;
+  --color-cyber-panel: #0a1228;
+  --color-cyber-yellow: #ffd700;
+  --color-cyber-gold: #ffd700;
+  --color-cyber-blue: #3399ff;
+  --color-cyber-blue-deep: #1e40af;
+  --color-cyber-red: #dc2626;
+  --color-cyber-ink: #f8fafc;
+  --color-cyber-muted: #94a3b8;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-display);
+  background-color: var(--color-cyber-bg-deep);
+  color: var(--color-cyber-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+code {
+  font-family: var(--font-mono-display);
+  font-size: 0.85em;
+}
+
+/* Subtle HUD grid */
+.cyber-hud-grid {
+  background-image:
+    linear-gradient(rgba(51, 153, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51, 153, 255, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Glitch / chromatic name */
+@keyframes cyber-glitch {
+  0%,
+  90%,
+  100% {
+    text-shadow: 2px 0 rgba(255, 0, 0, 0.45), -2px 0 rgba(51, 153, 255, 0.5);
+    transform: translate(0);
+  }
+  92% {
+    text-shadow: -3px 0 rgba(255, 0, 0, 0.6), 3px 0 rgba(51, 153, 255, 0.55);
+    transform: translate(1px, -1px);
+  }
+  94% {
+    text-shadow: 2px 0 rgba(255, 0, 0, 0.4), -3px 0 rgba(51, 153, 255, 0.6);
+    transform: translate(-1px, 1px);
+  }
+}
+
+.cyber-glitch {
+  animation: cyber-glitch 3.5s ease-in-out infinite;
+}
+
+.cyber-scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+}
